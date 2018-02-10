@@ -1,0 +1,12 @@
+<p ng-show="lv.failed"><i>You have entered an incorrect password or username!</i></p>
+<div class="container">
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <form class="form-signin" name="sign_in" ng-submit="lv.login()">
+    <label for="inputUsername">Username</label>
+    <input type="text" id="username" class="form-control" placeholder="Username" autofocus="" ng-model="lv.user.username">
+    <label for="inputPassword">Password</label>
+    <input type="password" id="password" class="form-control" placeholder="Password" style="margin-bottom:25px" ng-model="lv.user.password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+  <div class="push"></div>
+</div>

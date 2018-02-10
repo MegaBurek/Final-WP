@@ -1,0 +1,127 @@
+.jumbotron-heading{
+  font: 400 95px/1.6 'Pacifico', Georgia, serif;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+.lead{
+  font: 400 95px/1.6 'Pacifico', Georgia, serif;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+.form-signin-heading{
+  font: 400 40px/1.6 'Pacifico', Georgia, serif;
+}
+.post-create-header{
+  font: 400 40px/1.6 'Pacifico', Georgia, serif;
+}
+.post_title{
+  font: 400 40px/1.6 'Pacifico', Georgia, serif;
+}
+.jumbotron{
+  background: url("back2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 10px;
+}
+.navbar.navbar-inverse{
+  margin-bottom: 0px;
+}
+
+.footer { 
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.footer,
+.push {
+  height: 120px;
+}
+
+.form-control{
+  margin-bottom:25px;
+  padding: 20px;
+}
+
+.img-container{
+  width:100%;
+}
+
+.msg-block {
+  margin-top:5px;
+}
+.msg-error {
+  color:#F00;
+  font-size:14px;
+}
+
+.btn.btn-primary.dropdown-toggle {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  color: white;
+  cursor:pointer;
+  overflow: hidden;
+  outline: none;
+  font: 400 20px/1.6 'Pacifico', Georgia, serif;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+.w3-button{
+  float:right;
+  cursor: pointer;
+}
+
+.edit-button{
+  width:20px;
+  position: relative;
+}
+
+.img-thumbnail{
+  cursor: pointer;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container-show {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.info{
+  
+}
