@@ -10,10 +10,6 @@
         //containers for editting user
         that.forEditUser = {};
 
-        //user registration containers
-        that.passwordcheck = "";
-        that.emailCheck = "";
-
         //new post container and date maker
         that.noviPost = {
             "path": "",
@@ -25,15 +21,6 @@
             "info": ""
         };
         that.date = "";
-
-        //new user container
-        that.novi = {
-            "username": "",
-            "password": "",
-            "name": "",
-            "surname": "",
-            "email": ""
-        };
 
         //-----------------------------------Functions for Editting User-------------------------------------------//
         that.prepareUserEdit = function (post) {

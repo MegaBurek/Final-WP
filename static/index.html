@@ -4,7 +4,6 @@
 <head>
   <title>Good Photo</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,47 +16,100 @@
 </head>
 
 <body ng-app="mainApp">
-  <ui-view name="navbar"></ui-view>
 
-  <main role="main">
+  <div ng-controller="LoginCtrl">
 
-    <section class="jumbotron text-center">
-
-      <div class="container">
-        <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
-        <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
-      </div>
-
-      <div class="filter-posts" ng-if="lv.loggedin">
-        <button type="button" class="btn btn-primary dropdown-toggle">Filter Posts</button>
-        <div class="form-group">
-          <select class="image-picker show-labels show-html" ng-options="tag for tag in lv.tags" ng-model="lv.selectTag" ng-required="true">
-          </select>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Share and Inspire!</a>
         </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li class="dropdown" ng-if="lc.loggedin">
+            <a class="dropdown-toggle" data-toggle="dropdown">Create
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#makePost">Photo</a>
+              </li>
+              <li>
+                <a href="">Album</a>
+              </li>
+              <li>
+                <a href="">Collage</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="">Top Rated</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right" ng-if="!lc.loggedin">
+          <li>
+            <a href="#makeUser">
+              <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+          </li>
+          <li>
+            <a href="#login">
+              <span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedin">
+          <li>
+            <button type="button" class="btn btn-default btn-sm" ng-click="lc.logout()" style="margin-top:10px">
+              <span class="glyphicon glyphicon-log-out"></span> Log out
+            </button>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedin">
+          <li>
+            <a href="#userInfo">
+              <span class="navbar-text" style="color:white"></span>My Profile</a>
+          </li>
+        </ul>
+
       </div>
+    </nav>
 
-    </section>
+  </div>
 
-    <!--Template Injection-->
+  <section class="jumbotron text-center">
+
     <div class="container">
-      <div id="main">
-        <ui-view></ui-view>
+      <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
+      <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
+    </div>
+
+    <!-- <div class="filter-posts">
+      <button type="button" class="btn btn-primary dropdown-toggle">Filter Posts</button>
+      <div class="form-group">
+        <select class="image-picker show-labels show-html" ng-options="tag for tag in lv.tags" ng-model="lv.selectTag" ng-required="true">
+        </select>
       </div>
-    </div>
-    <div class="push"></div>
-    </div>
+    </div> -->
 
-    <footer class="footer">
-      <p class="float-right">
-        <a href="/">Back to top</a>
-      </p>
-      <p>World's leading picture sharing website!</p>
-      <p>New to Good Photo?
-        <a href="#">Visit the homepage</a> or
-        <a href="#makeUser">Sign Up</a>.</p>
-    </footer>
+  </section>
 
-  </main>
+  <!--Template Injection-->
+  <div class="container">
+    <ui-view></ui-view>
+  </div>
+
+  <footer class="footer">
+    <p class="float-right">
+      <a href="/">Back to top</a>
+    </p>
+    <p>World's leading picture sharing website!</p>
+    <p>New to Good Photo?
+      <a href="#">Visit the homepage</a> or
+      <a href="#makeUser">Sign Up</a>.</p>
+  </footer>
+
 
   <!--Scripts-->
   <script src="js/jquery/jquery.min.js"></script>

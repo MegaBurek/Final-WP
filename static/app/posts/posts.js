@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('mainApp');
-    app.controller('postsCtrl', ['$http', function($http) {
+    app.controller('postsCtrl', ['loginService', '$state', '$http',  function(loginService, $state, $http) {
     
         //initializers
         var that = this;
@@ -55,7 +55,6 @@
 
         //-----------Function for showing buttons on posts-----------//
         that.checkPrivlage = function (id) {
-            that.returnUser();
             if (id == that.loggedinUser.idUsers) {
                 return true;
             }
@@ -65,7 +64,14 @@
         };
         //-----------------------------//
 
+        loginService.isLoggedIn(function() {
+            $state.go('home');
+        },
+        function() {
+            that.loggedinUser = {};
+        });
 
+        that.returnUser();
         that.getPosts();
 
     }]);

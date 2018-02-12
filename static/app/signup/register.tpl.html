@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="form-signin-heading">Fill in the details</h2>
+  
+    <form class="form-signin" name="registerForm" ng-submit="rc.checkAvailability()">
+      <label for="inputName">Name</label>
+      <input type="text" id="inputName" class="form-control" placeholder="Name..." required="" autofocus="" style="margin-bottom:25px"
+        ng-model="rc.novi.name">
+      <label for="inputSurname">Surname</label>
+      <input type="text" id="inputSurname" class="form-control" placeholder="Surname..." required="" style="margin-bottom:25px"
+        ng-model="rc.novi.surname">
+  
+      <label for="inputEmail">Email</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="someone@yahoo.com" required="" style="margin-bottom:25px"
+        ng-model="rc.novi.email" ng-model="email">
+      <label for="inputUsername">Username</label>
+      <input type="text" id="inputUsername" class="form-control" placeholder="Username..." required="" style="margin-bottom:25px"
+        ng-model="rc.novi.username">
+  
+      <label for="inputPassword1">Password</label>
+      <input type="password" class="form-control" id="novi.password" name="novi.password" ng-model="rc.novi.password" required=""
+        placeholder="Password..." style="margin-bottom:25px">
+      <label for="inputPassword2">Re-enter Password</label>
+      <input type="password" class="form-control" id="passwordcheck" name="passwordcheck" ng-model="rc.passwordcheck" required=""
+        placeholder="Re-enter..." style="margin-bottom:25px">
+      <i ng-hide="rc.passwordMatch()" style="color:red;">Passwords have to match!</i>
+  
+      <div class="container-button"></div>
+        <button class="btn btn-primary btn-md btn-block" type="submit" style="display:inline-block;float:left;width:10%;" ng-disabled="registerForm.$invalid">Register</button>
+        <button class="btn btn-primary btn-md btn-block" type="reset" value="Reset" style="display:inline-block;float:right;width:10%;">Reset</button>
+      </div>
+  
+    </form>
+  </div>
