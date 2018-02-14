@@ -64,13 +64,6 @@
         };
         //-----------------------------//
 
-        loginService.isLoggedIn(function() {
-            $state.go('home');
-        },
-        function() {
-            that.loggedinUser = {};
-        });
-
         that.returnUser();
         that.getPosts();
 

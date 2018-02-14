@@ -1,24 +1,26 @@
-<div class="row">
-  <div>
-    <div ng-repeat="post in lv.posts | filter: {tag:lv.selectTag} track by $index">
-      <div class="col 6 col-lg-4" style="width:25%">
-        <h2 style="font: 400 40px/1.6 'Pacifico', Georgia, serif;">{{post.title}}
-          <button class="w3-button w3-large w3-circle w3-red w3-card-4" value='Delete Post' title="Delete Post" ng-click="lv.remove(post.idPosts)"
-            ng-if="lv.checkPrivlage(post.Users_idUsers)">X</button>
-          <button class="w3-button w3-large w3-circle w3-green w3-card-4" value='Edit Post' title="Edit Post" ng-click="lv.getPost(post.idPosts)"
-            ng-if="lv.checkPrivlage(post.Users_idUsers)">
-            <img class="edit-button" src="https://png.icons8.com/ios/50/000000/edit.png">
-          </button>
-        </h2>
-        <div class="img-container">
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div ng-repeat="post in lv.posts | filter: {tag:lv.selectTag} track by $index">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
 
-          <img ui-sref="post({id: post.idPosts})" class="img-thumbnail" style="height: 350px; width:100%;display: block;" ng-src="{{post.path}}"
-            data-holder-rendered="true" ng-click="lv.showPost(post.idPosts)">
+            <h2 style="font: 400 40px/1.6 'Pacifico', Georgia, serif;">{{post.title | limitTo: 18 }}</h2>
+            <img ui-sref="post({idPosts: post.idPosts})" cursor="pointer" class="card-img-top" style="height: 225px; width: 100%; display: block;" ng-src="{{post.path}}"
+              data-holder-rendered="true">
+            <div class="card-body">
+              <p class="card-text">{{post.info}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group" ng-if="lv.checkPrivlage(post.Users_idUsers)">
+                  <button class="btn btn-sm btn-outline-secondary" value='Delete Post' title="Delete Post" ng-click="lv.remove(post.idPosts)">Delete</button>
+                  <button class="btn btn-sm btn-outline-secondary" value='Edit Post' title="Edit Post" ng-click="lv.getPost(post.idPosts)">Edit</button>
+                </div>
+                <small class="text-muted">{{post.date | date:'dd/MM/yyyy' }}</small>
+              </div>
+            </div>
 
+          </div>
         </div>
-        <p>{{post.info}}</p>
-        <!-- <p>{{post.author}}</p> -->
-        <p>{{post.date | date:'dd. MM. yyyy.' }}</p>
       </div>
     </div>
   </div>

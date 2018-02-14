@@ -4,6 +4,7 @@
 <head>
   <title>Good Photo</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -51,11 +52,11 @@
 
         <ul class="nav navbar-nav navbar-right" ng-if="!lc.loggedin">
           <li>
-            <a href="#makeUser">
+            <a ui-sref="signup">
               <span class="glyphicon glyphicon-user"></span> Sign Up</a>
           </li>
           <li>
-            <a href="#login">
+            <a ui-sref="login">
               <span class="glyphicon glyphicon-log-in"></span> Login</a>
           </li>
         </ul>
@@ -78,37 +79,42 @@
 
   </div>
 
-  <section class="jumbotron text-center">
+  <!--Template Injection-->
+  <main role="main">
 
+    <section class="jumbotron text-center">
+
+      <div class="container">
+        <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
+        <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
+      </div>
+
+      <div class="filter-posts" ng-if="lv.loggedin">
+        <button type="button" class="btn btn-primary dropdown-toggle">Filter Posts</button>
+        <div class="form-group">
+          <select class="image-picker show-labels show-html" ng-options="tag for tag in lv.tags" ng-model="lv.selectTag" ng-required="true">
+          </select>
+        </div>
+      </div>
+
+    </section>
+
+    <!--Template Injection-->
     <div class="container">
-      <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
-      <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
+      <ui-view></ui-view>
     </div>
 
-    <!-- <div class="filter-posts">
-      <button type="button" class="btn btn-primary dropdown-toggle">Filter Posts</button>
-      <div class="form-group">
-        <select class="image-picker show-labels show-html" ng-options="tag for tag in lv.tags" ng-model="lv.selectTag" ng-required="true">
-        </select>
-      </div>
-    </div> -->
+    <footer class="footer">
+      <p class="float-right">
+        <a href="/">Back to top</a>
+      </p>
+      <p>World's leading picture sharing website!</p>
+      <p>New to Good Photo?
+        <a href="#">Visit the homepage</a> or
+        <a href="#makeUser">Sign Up</a>.</p>
+    </footer>
 
-  </section>
-
-  <!--Template Injection-->
-  <div class="container">
-    <ui-view></ui-view>
-  </div>
-
-  <footer class="footer">
-    <p class="float-right">
-      <a href="/">Back to top</a>
-    </p>
-    <p>World's leading picture sharing website!</p>
-    <p>New to Good Photo?
-      <a href="#">Visit the homepage</a> or
-      <a href="#makeUser">Sign Up</a>.</p>
-  </footer>
+  </main>
 
 
   <!--Scripts-->

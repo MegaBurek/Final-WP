@@ -5,6 +5,7 @@
 
         that.loggedin = false;
         that.failed = false;
+        that.showLogin = false;
         that.user = {
             'username': '',
             'password': ''
@@ -12,10 +13,12 @@
 
         that.login = function() {
             loginService.login(that.user, function() {
-                alert("You have succesfully logged in")
+                that.loggedIn = true;
                 $state.go('home');
+                location.reload();
             },
             function() {
+                alert("Username or password don't exist")
                 that.failed = true;
             })
         }
@@ -31,10 +34,12 @@
         }
 
         loginService.isLoggedIn(function() {
-            $state.go('home');
+            if ($state.includes('login') || $state.includes('signup')) {
+                $state.go('home');
+            }
         },
         function() {
-            that.loggedin = true;
+            that.showLogin = true;
         });
 
     }]);

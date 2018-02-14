@@ -47,23 +47,13 @@ html, body {
   margin: 0;
 }
 
-.wrapper {
-  min-height: 100%;
-  margin-bottom: -50px;
-}
-
-.footer,
-.push {
+.footer{
   height: 120px;
 }
 
 .form-control{
   margin-bottom:25px;
   padding: 20px;
-}
-
-.img-container{
-  width:100%;
 }
 
 .msg-block {
@@ -90,16 +80,6 @@ html, body {
   1px 1px 0 #000;
 }
 
-.w3-button{
-  float:right;
-  cursor: pointer;
-}
-
-.edit-button{
-  width:20px;
-  position: relative;
-}
-
 .img-thumbnail{
   cursor: pointer;
 }
@@ -120,8 +100,4 @@ html, body {
 .container-show {
   border-radius: 5px;
   padding: 10px;
-}
-
-.info{
-  
 }

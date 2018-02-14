@@ -14,7 +14,7 @@
             name: 'login',
             url: '/login',
             templateUrl: 'app/login/login.tpl.html',
-            controller: 'loginCtrl',
+            controller: 'LoginCtrl',
             controllerAs: 'lc'
         }).state({
             name: 'signup',
