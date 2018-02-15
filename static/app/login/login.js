@@ -1,47 +1,70 @@
 (function (angular) {
     var app = angular.module('mainApp');
-    app.controller('LoginCtrl', ['loginService', '$state', '$http',  function(loginService, $state, $http) {
+    app.controller('LoginCtrl', ['loginService', '$state', '$http', function (loginService, $state, $http) {
         var that = this;
-
-        that.loggedin = false;
         that.failed = false;
-        that.showLogin = false;
+        that.loggedIn = false;
         that.user = {
             'username': '',
             'password': ''
         }
+        that.loggedInUser = {};
 
-        that.login = function() {
-            loginService.login(that.user, function() {
+        that.getUser = function () {
+            $http.get('/returnLogged').then(
+                function (response) {
+                    that.loggedInUser = response.data;
+                },
+                function (reason) {
+                    console.log(reason);
+                }
+            );
+        }
+
+        that.logout = function () {
+            $http.get('/logout').then(
+                function (response) {
+                    that.loggedIn = false
+                    alert("You have succesfully logged out")
+                    $state.go('home')
+                },
+                function (reason) {
+                    console.log(reason);
+                }
+            );
+
+        }
+
+        that.login = function () {
+            loginService.login(that.user, function () {
                 that.loggedIn = true;
                 $state.go('home');
                 location.reload();
             },
-            function() {
-                alert("Username or password don't exist")
-                that.failed = true;
-            })
+                function () {
+                    that.failed = true;
+                    alert("Username and password do not match")
+                }
+            )
         }
 
-        that.logout = function() {
-            loginService.logout(function () {
-                alert("You have succesfully logged out")
-                $state.go('home');
+        that.logStatus = function () {
+            $http.get('/isLoggedin').then(function (response) {
+                if (response.data == true) {
+                    that.loggedIn = true;
+                } else {
+                    that.loggedIn = false;
+                }
             },
-            function() {
-                that.loggedin = false;
-            })
+                function (reason) {
+                    console.log(reason);
+                }
+            );
         }
 
-        loginService.isLoggedIn(function() {
-            if ($state.includes('login') || $state.includes('signup')) {
-                $state.go('home');
-            }
-        },
-        function() {
-            that.showLogin = true;
-        });
+        setInterval(that.getUser(), 5)
+
+        setInterval(that.logStatus(), 5)
 
     }]);
-
 })(angular);

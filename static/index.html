@@ -68,10 +68,17 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedin">
-          <li>
-            <a href="#userInfo">
-              <span class="navbar-text" style="color:white"></span>My Profile</a>
-          </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" style="margin-left:7px  " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Welcome {{that.loggedInUser.username}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" ui-sref="userProfile( { iduser: that.loggedInUser.iduser } )"> View Profile </a>
+              <a class="dropdown-item" ui-sref="editProfile( { iduser: that.loggedInUser.iduser } )"> Edit Profile </a>
+              <a class="dropdown-item" href="/logout" ng-click="that.logout()"> Log Out </a>
+            </div>
+          </div>
         </ul>
 
       </div>
