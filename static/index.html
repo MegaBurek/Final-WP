@@ -18,18 +18,19 @@
 
 <body ng-app="mainApp">
 
-  <div ng-controller="LoginCtrl">
+  <div ng-controller="LoginCtrl as lc">
 
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Share and Inspire!</a>
+          <a class="navbar-brand">Share and Inspire!</a>
+          <button ng-click="lc.showlog()">click</button>
         </div>
         <ul class="nav navbar-nav">
           <li>
             <a href="#">Home</a>
           </li>
-          <li class="dropdown" ng-if="lc.loggedin">
+          <li class="dropdown" ng-if="lc.loggedIn">
             <a class="dropdown-toggle" data-toggle="dropdown">Create
               <span class="caret"></span>
             </a>
@@ -50,7 +51,7 @@
           </li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right" ng-if="!lc.loggedin">
+        <ul class="nav navbar-nav navbar-right" ng-if="!lc.loggedIn">
           <li>
             <a ui-sref="signup">
               <span class="glyphicon glyphicon-user"></span> Sign Up</a>
@@ -60,14 +61,14 @@
               <span class="glyphicon glyphicon-log-in"></span> Login</a>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedin">
+        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedIn">
           <li>
             <button type="button" class="btn btn-default btn-sm" ng-click="lc.logout()" style="margin-top:10px">
               <span class="glyphicon glyphicon-log-out"></span> Log out
             </button>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedin">
+        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedIn">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" style="margin-left:7px  " type="button" id="dropdownMenuButton" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">

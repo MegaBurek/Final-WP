@@ -39,7 +39,7 @@
             loginService.login(that.user, function () {
                 that.loggedIn = true;
                 $state.go('home');
-                location.reload();
+                console.log(that.loggedIn);
             },
                 function () {
                     that.failed = true;
@@ -62,9 +62,9 @@
             );
         }
 
-        setInterval(that.getUser(), 5)
-
-        setInterval(that.logStatus(), 5)
+        that.showlog = function() {
+            console.log(that.loggedIn);
+        }
 
     }]);
 })(angular);
