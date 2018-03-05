@@ -1,0 +1,64 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Share and Inspire!</a>
+            <button ng-click="nb.showlog()">click</button>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li class="dropdown" ng-show="nb.loggedIn">
+                <a class="dropdown-toggle" data-toggle="dropdown">Create
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#makePost">Photo</a>
+                    </li>
+                    <li>
+                        <a href="">Album</a>
+                    </li>
+                    <li>
+                        <a href="">Collage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Top Rated</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right" ng-show="!nb.loggedIn">
+            <li>
+                <a ui-sref="signup">
+                    <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+            </li>
+            <li>
+                <a ui-sref="login">
+                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-show="nb.loggedIn">
+            <li>
+                <button type="button" class="btn btn-default btn-sm" ng-click="nb.logout()" style="margin-top:10px">
+                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                </button>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-show="nb.loggedIn">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" style="margin-left:7px  " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Welcome {{that.loggedInUser.username}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" ui-sref="userProfile( { iduser: that.loggedInUser.iduser } )"> View Profile </a>
+                    <a class="dropdown-item" ui-sref="editProfile( { iduser: that.loggedInUser.iduser } )"> Edit Profile </a>
+                    <a class="dropdown-item" href="/logout" ng-click="nb.logout()"> Log Out </a>
+                </div>
+            </div>
+        </ul>
+
+    </div>
+</nav>

@@ -5,11 +5,7 @@
   <title>Good Photo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <!-- Custom styles for this template -->
   <link rel="stylesheet" href="styles/main.css">
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,74 +14,7 @@
 
 <body ng-app="mainApp">
 
-  <div ng-controller="LoginCtrl as lc">
-
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand">Share and Inspire!</a>
-          <button ng-click="lc.showlog()">click</button>
-        </div>
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li class="dropdown" ng-if="lc.loggedIn">
-            <a class="dropdown-toggle" data-toggle="dropdown">Create
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#makePost">Photo</a>
-              </li>
-              <li>
-                <a href="">Album</a>
-              </li>
-              <li>
-                <a href="">Collage</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="">Top Rated</a>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right" ng-if="!lc.loggedIn">
-          <li>
-            <a ui-sref="signup">
-              <span class="glyphicon glyphicon-user"></span> Sign Up</a>
-          </li>
-          <li>
-            <a ui-sref="login">
-              <span class="glyphicon glyphicon-log-in"></span> Login</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedIn">
-          <li>
-            <button type="button" class="btn btn-default btn-sm" ng-click="lc.logout()" style="margin-top:10px">
-              <span class="glyphicon glyphicon-log-out"></span> Log out
-            </button>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" ng-if="lc.loggedIn">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" style="margin-left:7px  " type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Welcome {{that.loggedInUser.username}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" ui-sref="userProfile( { iduser: that.loggedInUser.iduser } )"> View Profile </a>
-              <a class="dropdown-item" ui-sref="editProfile( { iduser: that.loggedInUser.iduser } )"> Edit Profile </a>
-              <a class="dropdown-item" href="/logout" ng-click="that.logout()"> Log Out </a>
-            </div>
-          </div>
-        </ul>
-
-      </div>
-    </nav>
-
-  </div>
+  <ui-view name="navbar"></ui-view>
 
   <!--Template Injection-->
   <main role="main">
@@ -95,14 +24,6 @@
       <div class="container">
         <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
         <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
-      </div>
-
-      <div class="filter-posts" ng-if="lv.loggedin">
-        <button type="button" class="btn btn-primary dropdown-toggle">Filter Posts</button>
-        <div class="form-group">
-          <select class="image-picker show-labels show-html" ng-options="tag for tag in lv.tags" ng-model="lv.selectTag" ng-required="true">
-          </select>
-        </div>
       </div>
 
     </section>
@@ -126,21 +47,22 @@
 
 
   <!--Scripts-->
-  <script src="js/jquery/jquery.min.js"></script>
-  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="js/jquery/jquery-3.2.1.min.js"></script>
   <script src="js/popper.js/popper.min.js"></script>
+  <script src="js/bootstrap/bootstrap.min.js"></script>
 
   <script src="js/angularjs/angular.min.js"></script>
   <script src="js/angularjs-ui-router/angular-ui-router.min.js"></script>
-
+  <script src="js/angularjs-file-upload/ng-file-upload-all.min.js"></script>
+  
   <script src="app/main.js"></script>
   <script src="app/posts/posts.js"></script>
   <script src="app/login/login.js"></script>
+  <script src="app/navbar/navbar.js"></script>
   <script src="app/user_services/user_services.js"></script>
   <script src="app/services/loginService.js"></script>
-
   <!---->
+
 </body>
 
 

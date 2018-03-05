@@ -1,6 +1,6 @@
 (function (angular) {
     var app = angular.module('Aplikacija');
-    app.controller('ArticleCtrl', ['$http', '$state', '$stateParams', 'loginService', function($http, $state, $stateParams, loginService) {
+    app.controller('postCtrl', ['$http', '$state', '$stateParams', 'loginService', function($http, $state, $stateParams, loginService) {
         var that = this;
 
         that.article = {}
