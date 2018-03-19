@@ -36,12 +36,12 @@
             }
         }).state('post', {
             parent: 'app',
-            url: '/article/{id:int}',
+            url: '/posts/{id:int}',
             views: {
                 '': {
                     templateUrl: 'app/post/post.tpl.html',
                     controller: 'postCtrl',
-                    controllerAs: 'lv'
+                    controllerAs: 'pl'
                 }
             }
         }).state('login', {
@@ -52,6 +52,26 @@
                     templateUrl: 'app/login/login.tpl.html',
                     controller: 'LoginCtrl',
                     controllerAs: 'lc'
+                }
+            }
+        }).state('makePost', {
+            parent: 'app',
+            url: '/makePost',
+            views: {
+                '': {
+                    templateUrl: 'app/user_services/makepost.tpl.html',
+                    controller: 'UserServiceControl',
+                    controllerAs: 'uc'
+                }
+            }
+        }).state('editpost', {
+            parent: 'app',
+            url: '/editpost',
+            views: {
+                '': {
+                    templateUrl: 'app/post/editpost.tpl.html',
+                    controller: 'postCtrl',
+                    controllerAs: 'pl'
                 }
             }
         }).state('userProfile', {

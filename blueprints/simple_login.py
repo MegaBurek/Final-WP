@@ -27,9 +27,17 @@ def login():
 def is_loggedin():
     return jsonify(session.get("user") is not None)
 
-@simple_login.route("/returnLogged", methods=["GET"])
-def returnLogged():
-    return jsonify(session.get("user"))
+@simple_login.route("/loggedInUser", methods=["GET"])
+def logged_in_user():
+    if session.get("user") is not None:
+        login_user = request.json
+        cursor = mysql.get_db().cursor()
+        cursor.execute("SELECT * FROM users WHERE idUsers=%s", (session.get("user")["idUsers"]))
+        user = cursor.fetchone()
+        
+        return flask.jsonify(user)
+    else:
+        return "Access denied!", 401
 
 @simple_login.route("/logout", methods=["GET"])
 def logout():

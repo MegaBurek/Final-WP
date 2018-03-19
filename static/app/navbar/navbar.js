@@ -17,6 +17,7 @@
 
         that.logout = function() {
             loginService.logout(function(){
+                alert("You have succesfully logged out");
                 $state.go('home');
             }, function(){});
         }
@@ -27,5 +28,6 @@
         function() {
             that.loggedIn = false;
         });
+
     }]);
 })(angular);

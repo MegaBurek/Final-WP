@@ -6,15 +6,11 @@
           <div class="card mb-4 box-shadow">
 
             <h2 style="font: 400 40px/1.6 'Pacifico', Georgia, serif;">{{post.title | limitTo: 18 }}</h2>
-            <img ui-sref="post({idPosts: post.idPosts})" cursor="pointer" class="card-img-top" style="height: 225px; width: 100%; display: block;" ng-src="{{post.path}}"
+            <img ui-sref="post({id: post.idPosts})" cursor="pointer" class="card-img-top" style="height: 225px; width: 100%; display: block;" ng-src="{{post.path}}"
               data-holder-rendered="true">
             <div class="card-body">
               <p class="card-text">{{post.info}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group" ng-if="lv.checkPrivlage(post.Users_idUsers)">
-                  <button class="btn btn-sm btn-outline-secondary" value='Delete Post' title="Delete Post" ng-click="lv.remove(post.idPosts)">Delete</button>
-                  <button class="btn btn-sm btn-outline-secondary" value='Edit Post' title="Edit Post" ng-click="lv.getPost(post.idPosts)">Edit</button>
-                </div>
                 <small class="text-muted">{{post.date | date:'dd/MM/yyyy' }}</small>
               </div>
             </div>

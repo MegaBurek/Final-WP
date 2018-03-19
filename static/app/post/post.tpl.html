@@ -7,11 +7,17 @@
             <img class="img-thumbnail" style="height: 500px; width:100%;" src="{{pl.post.path}}" data-holder-rendered="true">
         </div>
         <div class="column">
-            <p class="info">Title:</p>{{pl.post.title}}
-            <br>
-            <p class="info">Info:</p>{{pl.post.info}}
-            <br>
-            <p class="info">Tag:</p>{{pl.post.tag}}
+            <div class="container">
+                <h2><span class="label label-default">Title</span>: {{pl.post.title}}</h2>
+                <br>
+                <h2><span class="label label-default">Info</span>: {{pl.post.info}}</h2>
+                <br>
+                <h2><span class="label label-default">Tag</span>: <i>{{pl.post.tag}}</i></h2>
+              </div>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-sm btn-outline-secondary" value='Delete Post' title="Delete Post" ng-click="pl.remove(pl.post.idPosts)">Delete</button>
+            <button class="btn btn-sm btn-outline-secondary" value='Edit Post' title="Edit Post" ng-click="pl.callforEdit()">Edit</button>
         </div>
     </div>
 </div>

@@ -45,39 +45,6 @@
         }
         //------------------------------------------------------------------------------//
 
-        //-----------------------------------Functions for Editting Post--------------------//
-        lv.getPost = function (id) {
-            $http.get("/posts/" + id).then(function (response) {
-                lv.post = response.data;
-                $state.go('editpost');
-                lv.prepareEdit(lv.post);
-            },
-                function (reason) {
-                    console.log(reason)
-                });
-        };
-
-        lv.prepareEdit = function (post) {
-            lv.forEdit = angular.copy(post);
-            console.log(lv.forEdit)
-        }
-
-        lv.cancelEdit = function () {
-            lv.forEdit = {};
-        }
-
-        lv.editPost = function () {
-            $http.put("/posts/" + lv.forEdit.idPosts, lv.forEdit).then(function (response) {
-                lv.forEdit = {};
-                alert("You have successfully changed your post");
-                $state.go('home');
-            },
-                function (reason) {
-                    console.log(reason)
-                });
-        }
-        //-------------------------------------------------------//
-        
         //-----------------------------------Functions for Adding Post-------------------------------------------//
         lv.appendPosts = function () {
             var filename = document.getElementById("Image-select").value;
@@ -135,26 +102,6 @@
             }
         }
         //----------------------------------------------------------------//
-
-        //---------------------Function for Reutrning Logged In------------------------------//
-        that.getUser = function () {
-            $http.get('/returnLogged').then(
-                function (response) {
-                    that.loggedInUser = response.data;
-                },
-                function (reason) {
-                    console.log(reason);
-                }
-            );
-        }
-        //--------------------------------------------//
-
-        loginService.isLoggedin(function () {
-            that.fetchArticle();
-        },
-            function () {
-                $state.go('login');
-            });
 
     }]);
 
