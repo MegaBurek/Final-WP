@@ -3,6 +3,8 @@
     app.controller('postCtrl', ['$http', '$state', '$stateParams', 'loginService', function ($http, $state, $stateParams, loginService) {
         var that = this;
 
+        that.enableEdit = false;
+
         that.post = {};
         that.forEdit = {};
         that.loggedInUser = {};
@@ -46,8 +48,8 @@
         that.callforEdit = function () {
             if (that.checkPrivlage()) {
                 that.prepareEdit();
-                $state.go('editpost');
-                console.log(that.forEdit.idPosts)
+                that.enableEdit = true;
+                console.log(that.enableEdit);
             }
             else {
                 alert("You cannot edit someone else's post");
@@ -56,16 +58,15 @@
 
         that.prepareEdit = function () {
             that.forEdit = angular.copy(that.post);
-            console.log(that.forEdit);
         }
 
         that.cancelEdit = function () {
             that.forEdit = {};
+            that.enableEdit = false;
             $state.go("home");
         }
 
         that.editPost = function () {
-            console.log(that.forEdit.idPosts);
             $http.put("/posts/" + that.forEdit.idPosts, that.forEdit).then(function (response) {
                 that.forEdit = {};
                 alert("You have successfully changed your post");

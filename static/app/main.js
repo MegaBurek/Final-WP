@@ -54,6 +54,16 @@
                     controllerAs: 'lc'
                 }
             }
+        }).state('register', {
+            parent: 'app',
+            url: '/register',
+            views: {
+                '': {
+                    templateUrl: 'app/signup/register.tpl.html',
+                    controller: 'regControl',
+                    controllerAs: 'rc'
+                }
+            }
         }).state('makePost', {
             parent: 'app',
             url: '/makePost',
@@ -62,16 +72,6 @@
                     templateUrl: 'app/user_services/makepost.tpl.html',
                     controller: 'UserServiceControl',
                     controllerAs: 'uc'
-                }
-            }
-        }).state('editpost', {
-            parent: 'app',
-            url: '/editpost',
-            views: {
-                '': {
-                    templateUrl: 'app/post/editpost.tpl.html',
-                    controller: 'postCtrl',
-                    controllerAs: 'pl'
                 }
             }
         }).state('userProfile', {

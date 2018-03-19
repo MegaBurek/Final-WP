@@ -1,13 +1,14 @@
 (function (angular) {
     var app = angular.module('mainApp');
-    app.controller('UserServiceControl', ['loginService', '$state', '$http', function ($loginService, $state, $http) {
+    app.controller('regControl', ['$state', '$http', function ($loginService, $state, $http) {
 
         //initializers
         var that = this;
 
         //user registration containers
         that.passwordcheck = "";
-        that.emailCheck = "";
+        that.emailCheck ="";
+        that.authors = [];
         
         //new user container
         that.novi = {
@@ -20,10 +21,9 @@
 
         //-----------------------------------Functions for Registration-------------------------------------------//
         that.checkAvailability = function () {
-            $scope.email = that.emailCheck;
             for (i = 0; i < that.authors.length; i++) {
                 if (that.emailCheck == that.authors[i].Email) {
-                    alert("This Email already exists")
+                    alert("This Email has already been registered")
                 }
                 else {
                     that.appendUser();
@@ -35,7 +35,8 @@
             $http.post("/addAuthor", that.novi).then(function (response) {
                 if (response.data["status"] == "done") {
                     alert("You have succesfully registered")
-                    $state.go('home')
+                    $state.go('login')
+                    alert("Please try login with your new account")
                 }
             },
                 function (reason) {
@@ -53,12 +54,15 @@
         }
         //----------------------------------------------------------------//
 
-        loginService.isLoggedin(function () {
-            that.checkAvailability();
-        },
-            function () {
-                $state.go('login');
+        that.getAuthors = function () {
+            $http.get("/getAuthors").then(function (response) {
+                that.authors = response.data;
+            }, function (reason) {
+                console.log(reason);
             });
+        }
+
+        that.getAuthors();
 
     }]);
 

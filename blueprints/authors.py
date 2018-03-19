@@ -8,11 +8,8 @@ authors_flask = Blueprint("authors_flask", __name__)
 
 @authors_flask.route("/getAuthors", methods=["GET"])
 def authors():
-    # Dobavljanje kursora.
     cursor = mysql.get_db().cursor()
-    # Upit za dobavljanje svih autora.
     cursor.execute("SELECT * FROM users")
-    # Dobavljanje svih torki iz tabele author.
     rows = cursor.fetchall()
 
     return flask.jsonify(rows)
