@@ -1,14 +1,14 @@
 (function (angular) {
     var app = angular.module('mainApp');
-    app.controller('regControl', ['$state', '$http', function ($loginService, $state, $http) {
+    app.controller('regControl', ['$state', '$http', function ($state, $http) {
 
         //initializers
         var that = this;
 
+        that.authors = [];
+
         //user registration containers
         that.passwordcheck = "";
-        that.emailCheck ="";
-        that.authors = [];
         
         //new user container
         that.novi = {
@@ -16,14 +16,15 @@
             "password": "",
             "name": "",
             "surname": "",
-            "email": ""
+            "email": "",
+            "type": "User"
         };
 
         //-----------------------------------Functions for Registration-------------------------------------------//
         that.checkAvailability = function () {
             for (i = 0; i < that.authors.length; i++) {
-                if (that.emailCheck == that.authors[i].Email) {
-                    alert("This Email has already been registered")
+                if (that.novi.email == that.authors[i].Email || that.novi.username == that.authors[i].Username) {
+                    alert("This user has already been registered")
                 }
                 else {
                     that.appendUser();
@@ -36,7 +37,6 @@
                 if (response.data["status"] == "done") {
                     alert("You have succesfully registered")
                     $state.go('login')
-                    alert("Please try login with your new account")
                 }
             },
                 function (reason) {
@@ -52,7 +52,7 @@
                 return true;
             }
         }
-        //----------------------------------------------------------------//
+
 
         that.getAuthors = function () {
             $http.get("/getAuthors").then(function (response) {

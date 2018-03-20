@@ -22,11 +22,11 @@ def add_user():
     cursor = db.cursor()
 
     q = '''INSERT INTO
-    users(Username,Password,Name,Surname,Email)
-    VALUES(%s, %s, %s, %s, %s)'''
+    users(Username,Password,Name,Surname,Email,Type)
+    VALUES(%s, %s, %s, %s, %s, %s)'''
     
     cursor.execute(q, (data["username"], data["password"],
-                       data["name"], data["surname"], data["email"]))
+                       data["name"], data["surname"], data["email"],data["type"]))
     db.commit()
     return flask.jsonify({"status": "done"}), 201
 
