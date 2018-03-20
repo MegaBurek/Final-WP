@@ -1,0 +1,40 @@
+<div ng-show="!up.enableEdit">
+    <div class="column">
+        <div class="container">
+            <h2><span class="label label-default">Name</span>: {{up.loggedInUser.Name}}</h2>
+            <br>
+            <h2><span class="label label-default">Surname</span>: {{up.loggedInUser.Surname}}</h2>
+            <br>
+            <h2><span class="label label-default">Email</span>: <i>{{up.loggedInUser.Email}}</i></h2>
+          </div>
+    </div>
+    <div class="container-button">
+        <button class="btn btn-primary btn-md btn-block" type="submit" value="Edit" style="float:left;width:10%;" ng-click="up.prepareUserEdit()">Edit</button>
+    </div>
+    <hr>
+</div>
+
+<div class="container" ng-show="up.enableEdit">
+    <h1 class="post-create-header">Edit your Information</h1>
+    <form name="editUser" ng-submit="up.editUser()" method="PUT">
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Name..." ng-model="up.forEditUser.Name" required>
+            <i ng-show="editUser.title.$error.required" style="color:red">*a name is required</i>
+        </div>
+        <div class="form-group">
+            <label for="Surname">Surname</label>
+            <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Surname..." ng-model="up.forEditUser.Surname" required>
+            <i ng-show="editUser.content.$error.required" style="color:red">*a surname is required</i>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email..." ng-model="up.forEditUser.Email" required>
+            <i ng-show="editUser.content.$error.required" style="color:red">*an email is required</i>
+        </div>
+        <div class="container-button">
+            <button class="btn btn-primary btn-md btn-block" type="submit" value="Edit" style="float:left;width:10%;">Edit</button>
+            <button class="btn btn-primary btn-md btn-block" type="reset" value="Reset" style="float:right;width:10%" ng-click="up.cancelEditUser();">Reset</button>
+        </div>
+    </form>
+</div>

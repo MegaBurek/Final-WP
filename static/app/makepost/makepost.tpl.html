@@ -1,0 +1,49 @@
+<div class="container">
+  <h1 class="post-create-header">Make your Post!</h1>
+  <form name="newPost" ng-submit="pcc.appendPosts()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Title..." ng-model="pcc.noviPost.title" required>
+      <i ng-show="newPost.title.$error.required" style="color:red">*a title is required</i>
+    </div>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <select class="image-picker show-labels show-html" id="Image-select">
+        <option value="space1.jpg">Painting</option>
+        <option value="car1.jpg">Mazda</option>
+        <option value="landscape3.jpg">Lake</option>
+        <option value="flower1.jpeg">Daffodil</option>
+        <option value="flower2.jpg">Multi Color Rose</option>
+        <option value="car2.jpg">Datsun</option>
+        <option value="space2.jpg">Gas Clouds</option>
+        <option value="landscape.jpg">The Sun</option>
+        <option value="space4.jpg">Astronaut</option>
+        <option value="car3.jpg">Toyota</option>
+        <option value="flower3.jpg">Sunflower</option>
+        <option value="landscape2.jpg">Horizon</option>
+        <option value="landscape1.jpeg">Waterfall</option>
+        <option value="space3.jpg">Abstract Astronauts</option>
+        <option value="car4.png">Shitty Car</option>
+        <option value="flower4.jpg">Roses</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="content">Description</label>
+      <textarea class="form-control" id="content" name="content" placeholder="Description..." ng-model="pcc.noviPost.info" required></textarea>
+      <i ng-show="newPost.content.$error.required" style="color:red">*a desctription is required</i>
+    </div>
+    <div class="form-group">
+      <label for="tag">Tags</label>
+      <select class="image-picker show-labels show-html" ng-model="pcc.noviPost.tag">
+        <option>space</option>
+        <option>car</option>
+        <option>flower</option>
+        <option>andscape</option>
+      </select>
+    </div>
+    <div class="container-button">
+      <button class="btn btn-primary btn-md btn-block" type="submit" style="float:left;width:10%;">Create</button>
+      <button class="btn btn-primary btn-md btn-block" type="reset" value="Reset" style="float:right;width:10%">Reset</button>
+    </div>
+  </form>
+</div>

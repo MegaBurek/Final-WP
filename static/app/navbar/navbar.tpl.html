@@ -15,7 +15,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#makePost">Photo</a>
+                        <a ui-sref="makePost">Photo</a>
                     </li>
                     <li>
                         <a href="">Album</a>
@@ -49,18 +49,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right" ng-show="nb.loggedIn">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">My Profile
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" ui-sref="userProfile( { iduser: nb.loggedInUser.idUsers } )"> View Profile </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" ui-sref="editProfile( { iduser: nb.loggedInUser.idUsers } )"> Edit Profile </a>
-                    </li>
-                </ul>
+            <li>
+                <a ui-sref="userProfile">
+                    <span class="glyphicon glyphicon-user"></span> My Profile</a>
             </li>
         </ul>
 

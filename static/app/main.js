@@ -69,9 +69,9 @@
             url: '/makePost',
             views: {
                 '': {
-                    templateUrl: 'app/user_services/makepost.tpl.html',
-                    controller: 'UserServiceControl',
-                    controllerAs: 'uc'
+                    templateUrl: 'app/makepost/makepost.tpl.html',
+                    controller: 'postcreateCtrl',
+                    controllerAs: 'pcc'
                 }
             }
         }).state('userProfile', {
@@ -79,7 +79,7 @@
             url: '/userProfile',
             views: {
                 '': {
-                    templateUrl: 'app/user-profile/user-profile.tpl.html',
+                    templateUrl: 'app/user_profile/user_profile.tpl.html',
                     controller: 'UserProfileCtrl',
                     controllerAs: 'up'
                 }
