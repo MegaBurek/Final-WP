@@ -1,8 +1,8 @@
-(function(angular) {
+(function (angular) {
     //Kreiranje novog modula
     var loginService = angular.module('loginService', []);
     var ls = undefined;
-    loginService.factory('loginService', ['$http', function($http) {
+    loginService.factory('loginService', ['$http', function ($http) {
         //Lenja inicijalizacija i singleton pattern!
         //Servis za login ce sada imati samo jedan objekat za rad
         //sa login zahtevima!
@@ -10,83 +10,95 @@
         //cekaju na dogadjaje prijave i odjave.
         //Svi zainteresovani pretplatioci moraju da se prijave
         //pozivom metoda addLoginListener i addLogoutListener. 
-        if(!ls) {
+        if (!ls) {
             var ls = {
                 loginListeners: [],
                 logoutListeners: [],
-                addLoginListener: function(scope, listener) {
+                addLoginListener: function (scope, listener) {
                     var that = this;
                     //Listener je funkcija koja ce obraditi dogadjaj.
                     this.loginListeners.push(listener);
                     //Kada se scope unisti potrebno je izbaciti pretplatioca
                     //iz liste pretplatilaca.
-                    var i = this.loginListeners.length-1;
-                    scope.$on('$destroy', function() {
+                    var i = this.loginListeners.length - 1;
+                    scope.$on('$destroy', function () {
                         that.loginListeners.splice(i, 1);
                     });
                 },
-                addLogoutListener: function(scope, listener) {
+                addLogoutListener: function (scope, listener) {
                     var that = this;
                     //Listener je funkcija koja ce obraditi dogadjaj.
                     this.logoutListeners.push(listener);
                     //Kada se scope unisti potrebno je izbaciti pretplatioca
                     //iz liste pretplatilaca.
-                    var i = this.logoutListeners.length-1;
-                    scope.$on('$destroy', function() {
+                    var i = this.logoutListeners.length - 1;
+                    scope.$on('$destroy', function () {
                         that.logoutListeners.splice(i, 1);
                     });
                 },
-                login: function(user, onSuccess, onFailure) {
+                login: function (user, onSuccess, onFailure) {
                     var that = this;
-                    return $http.post('/login', user).then(function(response) {
-                        if(response.data['success'] == true) {
+                    return $http.post('/login', user).then(function (response) {
+                        if (response.data['success'] == true) {
                             onSuccess();
-                            for(var i = 0; i < that.loginListeners.length; i++) {
+                            for (var i = 0; i < that.loginListeners.length; i++) {
                                 that.loginListeners[i](response.data);
                             }
                         } else {
                             onFailure();
                         }
                     },
-                    function(reason) {
-                        console.log(reason);
-                    })
+                        function (reason) {
+                            console.log(reason);
+                        })
                 },
-                isLoggedIn: function(onTrue, onFalse) {
-                    $http.get('/isLoggedin').then(function(response) {
-                        if(response.data == true) {
+                isLoggedIn: function (onTrue, onFalse) {
+                    $http.get('/isLoggedin').then(function (response) {
+                        if (response.data == true) {
                             onTrue();
                         } else {
                             onFalse();
                         }
                     },
-                    function(reason) {
-                        console.log(reason)
-                    })
+                        function (reason) {
+                            console.log(reason)
+                        })
                 },
-                getLoggedIn: function(onSuccess, onFailure) {
-                    $http.get('/loggedInUser').then(function(response) {
+                checkAdmin: function (onTrue, onFalse) {
+                    $http.get('/checkAdmin').then(function (response) {
+                        if (response.data == 'Admin') {
+                            onTrue();
+                        } else {
+                            onFalse();
+                        }
+                    },
+                        function (reason) {
+                            console.log(reason)
+                        })
+                },
+                getLoggedIn: function (onSuccess, onFailure) {
+                    $http.get('/loggedInUser').then(function (response) {
                         onSuccess(response.data);
                     },
-                    function(reason) {
-                        onFailure(reason);
-                    });
+                        function (reason) {
+                            onFailure(reason);
+                        });
                 },
-                logout: function(onTrue, onFalse) {
+                logout: function (onTrue, onFalse) {
                     var that = this;
-                    $http.get('/logout').then(function(response) {
-                        if(response.data['success'] == true) {
+                    $http.get('/logout').then(function (response) {
+                        if (response.data['success'] == true) {
                             onTrue();
-                            for(var i = 0; i < that.logoutListeners.length; i++) {
+                            for (var i = 0; i < that.logoutListeners.length; i++) {
                                 that.logoutListeners[i](response.data);
                             }
                         } else {
                             onFalse();
                         }
                     },
-                    function(reason) {
-                        console.log(reason)
-                    })
+                        function (reason) {
+                            console.log(reason)
+                        })
                 }
             }
         }

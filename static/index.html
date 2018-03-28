@@ -21,9 +21,15 @@
 
     <section class="jumbotron text-center">
 
-      <div class="container">
+      <div class="container" ng-controller="postsCtrl">
         <h1 class="jumbotron-heading" style="color:white">Good Photo</h1>
         <p class="lead text-muted" style="color:white">Your best friend in image sharing</p>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" style="margin:0px" ng-model="lv.searchQuery">
+          </div>
+          <button type="submit" class="btn btn-default" ng-click="lv.searchBy(lv.searchQuery)">Submit</button>
+        </form>
       </div>
 
     </section>
@@ -54,7 +60,7 @@
   <script src="js/angularjs/angular.min.js"></script>
   <script src="js/angularjs-ui-router/angular-ui-router.min.js"></script>
   <script src="js/angularjs-file-upload/ng-file-upload-all.min.js"></script>
-  
+
   <script src="app/main.js"></script>
   <script src="app/posts/posts.js"></script>
   <script src="app/post/post.js"></script>
@@ -63,6 +69,7 @@
   <script src="app/navbar/navbar.js"></script>
   <script src="app/makepost/makepost.js"></script>
   <script src="app/user_profile/user_profile.js"></script>
+  <script src="app/admin_services/admin_services.js"></script>
   <script src="app/services/loginService.js"></script>
   <!---->
 

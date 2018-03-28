@@ -28,7 +28,7 @@ def add_post():
 
     data["likes"] = 1
     
-    cursor.execute(q, (data["path"], data["author_id"],data["likes"], data["date"],
+    cursor.execute(q, (data["path"], data["Users_idUsers"],data["likes"], data["date"],
                        data["tag"], data["title"], data["info"]))
 
     db.commit()

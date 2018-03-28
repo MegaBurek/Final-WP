@@ -1,7 +1,7 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      <div ng-repeat="post in lv.posts | filter: {tag:lv.selectTag} track by $index">
+      <div ng-repeat="post in lv.posts | filter: lv.searchByTitle track by $index">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
 

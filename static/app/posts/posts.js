@@ -5,6 +5,7 @@
         //initializers
         var that = this;
         that.posts = [];//all posts are saved here
+        that.searchByTitle = "";
 
         //-----------------------------------Function for Loading Posts--------------------//
         that.getPosts = function () {
@@ -18,6 +19,11 @@
             );
         }
         //------------------------------------------//
+
+        that.searchBy = function(x) {
+            that.searchByTitle = x;
+            console.log(that.searchByTitle)
+        }
 
         that.getPosts();
 

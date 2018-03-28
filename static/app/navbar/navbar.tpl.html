@@ -9,7 +9,7 @@
             <li>
                 <a href="#">Home</a>
             </li>
-            <li class="dropdown" ng-show="nb.loggedIn">
+            <li class="dropdown" ng-show="nb.loggedIn && !nb.adminLogged">
                 <a class="dropdown-toggle" data-toggle="dropdown">Create
                     <span class="caret"></span>
                 </a>
@@ -25,10 +25,28 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="dropdown" ng-show="nb.adminLogged">
+                <a class="dropdown-toggle" data-toggle="dropdown">View
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a ui-sref="viewUsers">Users</a>
+                    </li>
+                    <li>
+                        <a href="">Album</a>
+                    </li>
+                    <li>
+                        <a href="">Collage</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-show="!nb.adminLogged">
                 <a href="">Top Rated</a>
             </li>
         </ul>
+
+
 
         <ul class="nav navbar-nav navbar-right" ng-show="!nb.loggedIn">
             <li>

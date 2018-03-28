@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>List of Users</h2>      
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="author in ac.authors">
+          <td>{{author.Name}}</td>
+          <td>{{author.Surname}}</td>
+          <td>{{author.Email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

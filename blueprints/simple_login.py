@@ -27,6 +27,10 @@ def login():
 def is_loggedin():
     return jsonify(session.get("user") is not None)
 
+@simple_login.route("/checkAdmin", methods=["GET"])
+def checkAdmin():
+    return jsonify(session.get("user")["Type"])
+
 @simple_login.route("/loggedInUser", methods=["GET"])
 def logged_in_user():
     if session.get("user") is not None:

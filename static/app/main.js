@@ -74,6 +74,16 @@
                     controllerAs: 'pcc'
                 }
             }
+        }).state('viewUsers', {
+            parent: 'app',
+            url: '/viewUsers',
+            views: {
+                '': {
+                    templateUrl: 'app/admin_services/viewUsers.tpl.html',
+                    controller: 'adminControl',
+                    controllerAs: 'ac'
+                }
+            }
         }).state('userProfile', {
             parent: 'app',
             url: '/userProfile',
