@@ -1,13 +1,22 @@
+<div class="container" style="display:inline">
+  <div class="col-md-4 order-md-2 mb-4">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Search</span>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="..." style="margin:0px" ng-model="lv.searchQuery">
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="lv.searchBy(lv.searchQuery)">Submit</button>
+  </div>
+</div>
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      <div ng-repeat="post in lv.posts | filter: lv.searchByTitle track by $index">
+      <div ng-repeat="post in lv.posts | filter: lv.search track by $index">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-
             <h2 style="font: 400 40px/1.6 'Pacifico', Georgia, serif;">{{post.title | limitTo: 18 }}</h2>
-            <img ui-sref="post({id: post.idPosts})" cursor="pointer" class="card-img-top" style="height: 225px; width: 100%; display: block;" ng-src="{{post.path}}"
-              data-holder-rendered="true">
+            <img ui-sref="post({id: post.idPosts})" cursor="pointer" class="card-img-top" style="height: 225px; width: 100%; display: block;"
+              ng-src="{{post.path}}" data-holder-rendered="true">
             <div class="card-body">
               <p class="card-text">{{post.info}}</p>
               <div class="d-flex justify-content-between align-items-center">
